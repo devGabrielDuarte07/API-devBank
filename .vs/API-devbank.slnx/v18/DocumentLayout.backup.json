@@ -1,0 +1,126 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{49B4A375-013D-4784-B6B9-C6D58E92EF06}|API-devbank\\API-devbank.csproj|c:\\users\\biel1\\onedrive\\\u00E1rea de trabalho\\api-devbank\\api-devbank\\controllers\\contacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49B4A375-013D-4784-B6B9-C6D58E92EF06}|API-devbank\\API-devbank.csproj|solutionrelative:api-devbank\\controllers\\contacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49B4A375-013D-4784-B6B9-C6D58E92EF06}|API-devbank\\API-devbank.csproj|c:\\users\\biel1\\onedrive\\\u00E1rea de trabalho\\api-devbank\\api-devbank\\dtos\\conta\\extratoresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49B4A375-013D-4784-B6B9-C6D58E92EF06}|API-devbank\\API-devbank.csproj|solutionrelative:api-devbank\\dtos\\conta\\extratoresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49B4A375-013D-4784-B6B9-C6D58E92EF06}|API-devbank\\API-devbank.csproj|c:\\users\\biel1\\onedrive\\\u00E1rea de trabalho\\api-devbank\\api-devbank\\dtos\\conta\\transferenciarequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49B4A375-013D-4784-B6B9-C6D58E92EF06}|API-devbank\\API-devbank.csproj|solutionrelative:api-devbank\\dtos\\conta\\transferenciarequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49B4A375-013D-4784-B6B9-C6D58E92EF06}|API-devbank\\API-devbank.csproj|c:\\users\\biel1\\onedrive\\\u00E1rea de trabalho\\api-devbank\\api-devbank\\dtos\\conta\\valorrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49B4A375-013D-4784-B6B9-C6D58E92EF06}|API-devbank\\API-devbank.csproj|solutionrelative:api-devbank\\dtos\\conta\\valorrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49B4A375-013D-4784-B6B9-C6D58E92EF06}|API-devbank\\API-devbank.csproj|c:\\users\\biel1\\onedrive\\\u00E1rea de trabalho\\api-devbank\\api-devbank\\enums\\tipotransacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49B4A375-013D-4784-B6B9-C6D58E92EF06}|API-devbank\\API-devbank.csproj|solutionrelative:api-devbank\\enums\\tipotransacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49B4A375-013D-4784-B6B9-C6D58E92EF06}|API-devbank\\API-devbank.csproj|c:\\users\\biel1\\onedrive\\\u00E1rea de trabalho\\api-devbank\\api-devbank\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49B4A375-013D-4784-B6B9-C6D58E92EF06}|API-devbank\\API-devbank.csproj|solutionrelative:api-devbank\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ExtratoResponse.cs",
+              "DocumentMoniker": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\DTOs\\Conta\\ExtratoResponse.cs",
+              "RelativeDocumentMoniker": "API-devbank\\DTOs\\Conta\\ExtratoResponse.cs",
+              "ToolTip": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\DTOs\\Conta\\ExtratoResponse.cs",
+              "RelativeToolTip": "API-devbank\\DTOs\\Conta\\ExtratoResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T04:28:53.291Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ContaController.cs",
+              "DocumentMoniker": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Controllers\\ContaController.cs",
+              "RelativeDocumentMoniker": "API-devbank\\Controllers\\ContaController.cs",
+              "ToolTip": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Controllers\\ContaController.cs*",
+              "RelativeToolTip": "API-devbank\\Controllers\\ContaController.cs*",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAIwMQAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T02:26:26.963Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TransferenciaRequest.cs",
+              "DocumentMoniker": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\DTOs\\Conta\\TransferenciaRequest.cs",
+              "RelativeDocumentMoniker": "API-devbank\\DTOs\\Conta\\TransferenciaRequest.cs",
+              "ToolTip": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\DTOs\\Conta\\TransferenciaRequest.cs",
+              "RelativeToolTip": "API-devbank\\DTOs\\Conta\\TransferenciaRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T03:48:40.41Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TipoTransacao.cs",
+              "DocumentMoniker": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Enums\\TipoTransacao.cs",
+              "RelativeDocumentMoniker": "API-devbank\\Enums\\TipoTransacao.cs",
+              "ToolTip": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Enums\\TipoTransacao.cs",
+              "RelativeToolTip": "API-devbank\\Enums\\TipoTransacao.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T03:05:00.053Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ValorRequest.cs",
+              "DocumentMoniker": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\DTOs\\Conta\\ValorRequest.cs",
+              "RelativeDocumentMoniker": "API-devbank\\DTOs\\Conta\\ValorRequest.cs",
+              "ToolTip": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\DTOs\\Conta\\ValorRequest.cs",
+              "RelativeToolTip": "API-devbank\\DTOs\\Conta\\ValorRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T03:00:23.53Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "API-devbank\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "API-devbank\\Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAYwEUAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T01:30:51.695Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
