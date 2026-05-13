@@ -91,6 +91,9 @@ builder.Services.AddSwaggerGen(options =>
 var connectionString =
     builder.Configuration.GetConnectionString("DefaultConnection");
 
+
+Console.WriteLine(connectionString);
+
 builder.Services.AddDbContext<DevbankContext>(options =>
 {
     options.UseMySql(
