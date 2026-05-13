@@ -39,7 +39,7 @@
               "RelativeDocumentMoniker": "API-devbank\\Program.cs",
               "ToolTip": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Program.cs",
               "RelativeToolTip": "API-devbank\\Program.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAcwLQAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAowGcAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T20:20:28.671Z",
               "EditorCaption": ""
@@ -54,8 +54,7 @@
               "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\10.0.203\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
               "ViewState": "AgIAAOsAAAAAAAAAAAAcwAkBAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2026-05-13T17:27:11.347Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-13T17:27:11.347Z"
             },
             {
               "$type": "Document",
@@ -79,8 +78,7 @@
               "RelativeToolTip": "API-devbank\\Services\\ContaService.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAADgvysAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-12T22:58:47.716Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-12T22:58:47.716Z"
             }
           ]
         }
