@@ -58,10 +58,10 @@ namespace API_devbank.Services
                 await transaction.CommitAsync();
                 return ResultadoPadrao<object>.Ok("Usuario criado com sucesso");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 await transaction.RollbackAsync();
-                return ResultadoPadrao<object>.Falha("Erro ao criar usuário", 500);
+                return ResultadoPadrao<object>.Falha(ex.InnerException?.Message ?? ex.Message);
             }
         }
     }
