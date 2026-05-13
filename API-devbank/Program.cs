@@ -123,7 +123,8 @@ builder.Services.AddScoped<PixService>();
 // JWT
 // ==========================================
 
-var jwtKey = builder.Configuration["Jwt__Key"];
+var jwtKey =
+    Environment.GetEnvironmentVariable("Jwt__Key");
 
 if (string.IsNullOrEmpty(jwtKey))
 {
