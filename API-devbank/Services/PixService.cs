@@ -52,7 +52,7 @@ namespace API_devbank.Services
                         return ResultadoPadrao<object>.Falha("Telefone inválido", 400);
                     }
 
-                    break; 
+                    break;
             }
 
             var newChave = new TabelaChavePix
@@ -98,71 +98,144 @@ namespace API_devbank.Services
 
             chave.IsAtivo = false;
             db.SaveChanges();
-            return ResultadoPadrao<object>.Ok("Chave deletada"); 
+            return ResultadoPadrao<object>.Ok("Chave deletada");
 
         }
 
-        public async Task<ResultadoPadrao<object>> EnviarPix(EnviarPixRequest dto)
+        public async Task<ResultadoPadrao<object>> EnviarPix(
+    EnviarPixRequest dto
+)
         {
             if (dto.Valor <= 0)
             {
-                return ResultadoPadrao<object>.Falha("Tem que ser um valor positivo", 400);
+                return ResultadoPadrao<object>.Falha(
+                    "Tem que ser um valor positivo",
+                    400
+                );
             }
-            var chave = dto.Chave = dto.Chave.Trim().ToLower();
-            var pixDestino = db.TabelaChavePix.FirstOrDefault(c => c.Chave == chave && c.IsAtivo);
-            if (pixDestino == null)
-                return ResultadoPadrao<object>.Falha("Nenhuma chave pix encontrada", 404);
 
-            var contaDestino = db.TabelaContas.FirstOrDefault(c => c.Id == pixDestino.ContaId);
+            var chave = dto.Chave =
+                dto.Chave.Trim().ToLower();
+
+            var pixDestino = db.TabelaChavePix
+                .FirstOrDefault(c =>
+                    c.Chave == chave &&
+                    c.IsAtivo
+                );
+
+            if (pixDestino == null)
+            {
+                return ResultadoPadrao<object>.Falha(
+                    "Nenhuma chave pix encontrada",
+                    404
+                );
+            }
+
+            var contaDestino = db.TabelaContas
+                .FirstOrDefault(c =>
+                    c.Id == pixDestino.ContaId
+                );
+
             if (contaDestino == null)
-                return ResultadoPadrao<object>.Falha("Conta não encontrada", 404);
+            {
+                return ResultadoPadrao<object>.Falha(
+                    "Conta não encontrada",
+                    404
+                );
+            }
 
             var contaOrigem = ObterContaUsuarioLogado();
+
             if (contaOrigem == null)
-                return ResultadoPadrao<object>.Falha("Conta não encontrada", 404);
+            {
+                return ResultadoPadrao<object>.Falha(
+                    "Conta não encontrada",
+                    404
+                );
+            }
 
             if (contaOrigem.Id == contaDestino.Id)
             {
-                return ResultadoPadrao<object>
-                    .Falha("Você não pode enviar PIX para si mesmo", 400);
+                return ResultadoPadrao<object>.Falha(
+                    "Você não pode enviar PIX para si mesmo",
+                    400
+                );
             }
 
-            using var transaction = await db.Database.BeginTransactionAsync();
+            var strategy =
+                db.Database.CreateExecutionStrategy();
 
-            try
+            return await strategy.ExecuteAsync(async () =>
             {
-                var contaOrigemAtualizada = AtualizarSaldo(contaOrigem, -dto.Valor);
-                if (contaOrigemAtualizada == null)
+                using var transaction =
+                    await db.Database.BeginTransactionAsync();
+
+                try
+                {
+                    var contaOrigemAtualizada =
+                        AtualizarSaldo(
+                            contaOrigem,
+                            -dto.Valor
+                        );
+
+                    if (contaOrigemAtualizada == null)
+                    {
+                        await transaction.RollbackAsync();
+
+                        return ResultadoPadrao<object>.Falha(
+                            "Saldo insuficiente",
+                            400
+                        );
+                    }
+
+                    var contaDestinoAtualizada =
+                        AtualizarSaldo(
+                            contaDestino,
+                            dto.Valor
+                        );
+
+                    if (contaDestinoAtualizada == null)
+                    {
+                        await transaction.RollbackAsync();
+
+                        return ResultadoPadrao<object>.Falha(
+                            "Erro ao processar crédito na conta destino",
+                            400
+                        );
+                    }
+
+                    var pix = new TabelaTransaco
+                    {
+                        Tipo = TipoTransacao.P.ToString(),
+                        Valor = dto.Valor,
+                        ContaOrigemId = contaOrigem.Id,
+                        ContaDestinoId = contaDestino.Id,
+                    };
+
+                    db.TabelaTransacoes.Add(pix);
+
+                    await db.SaveChangesAsync();
+
+                    await transaction.CommitAsync();
+
+                    return ResultadoPadrao<object>.Ok(
+                        null,
+                        mensagem:
+                            $"Pix feito com sucesso, saldo atual: {contaOrigemAtualizada.Saldo}"
+                    );
+                }
+                catch (Exception ex)
                 {
                     await transaction.RollbackAsync();
-                    return ResultadoPadrao<object>.Falha("Saldo insuficiente", 400);
-                }
-                var contaDestinoAtualizada = AtualizarSaldo(contaDestino, dto.Valor);
-                if (contaDestinoAtualizada == null)
-                {
-                    await transaction.RollbackAsync();
-                    return ResultadoPadrao<object>.Falha("Erro ao processar crédito na conta destino", 400);
-                }
 
-                var pix = new TabelaTransaco
-                {
-                    Tipo = TipoTransacao.P.ToString(),
-                    Valor = dto.Valor,
-                    ContaOrigemId = contaOrigem.Id,
-                    ContaDestinoId = contaDestino.Id,
-                };
-                db.TabelaTransacoes.Add(pix);
-                await db.SaveChangesAsync();
-                await transaction.CommitAsync();
-                return ResultadoPadrao<object>.Ok(null, mensagem: $"Pix feito com sucesso, saldo atual: {contaOrigemAtualizada.Saldo}");
-            }
-            catch (Exception)
-            {
-                await transaction.RollbackAsync();
-                return ResultadoPadrao<object>.Falha("Erro ao fazer pix", 500);
-            }
-        }   
-
+                    return ResultadoPadrao<object>.Falha(
+                        ex.InnerException?.Message ??
+                        ex.Message,
+                        500
+                    );
+                }
+            });
+        }
         private TabelaConta AtualizarSaldo(TabelaConta conta, decimal valor)
         {
             decimal novoSaldo = conta.Saldo + valor;

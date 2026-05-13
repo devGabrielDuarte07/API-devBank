@@ -29,26 +29,28 @@ namespace API_devbank.Services
             return ResultadoPadrao<DadosUsuarioResponse>.Ok(dados);
         }
 
-        public async Task<ResultadoPadrao<object>> Depositar(ValorRequest dto) 
+        public async Task<ResultadoPadrao<object>> Depositar(ValorRequest dto)
         {
             var conta = ObterContaUsuarioLogado();
             if (conta == null)
                 return ResultadoPadrao<object>.Falha("Conta não encontrada", 404);
-            
+
 
             if (dto.Valor <= 0)
                 return ResultadoPadrao<object>.Falha("Valor tem que ser positivo", 400);
 
-            using var transaction = await db.Database.BeginTransactionAsync();
             try
             {
 
 
                 var ContaAtualizada = AtualizarSaldo(conta, dto.Valor);
+
                 if (ContaAtualizada == null)
                 {
-                    await transaction.RollbackAsync();
-                    return ResultadoPadrao<object>.Falha("Erro ao atualizar saldo", 400);
+                    return ResultadoPadrao<object>.Falha(
+                        "Erro ao atualizar saldo",
+                        400
+                    );
                 }
 
                 var deposito = new TabelaTransaco
@@ -57,15 +59,18 @@ namespace API_devbank.Services
                     Valor = dto.Valor,
                     ContaDestinoId = conta.Id
                 };
-                db.TabelaTransacoes.Add(deposito);
-                await db.SaveChangesAsync();
-                await transaction.CommitAsync();
 
-                return ResultadoPadrao<object>.Ok(null, mensagem: $"Depósito feito com sucesso, saldo atual: {conta.Saldo}");
+                db.TabelaTransacoes.Add(deposito);
+
+                await db.SaveChangesAsync();
+
+                return ResultadoPadrao<object>.Ok(
+                    null,
+                    mensagem: $"Depósito feito com sucesso, saldo atual: {conta.Saldo}"
+                );
             }
             catch (Exception)
             {
-                await transaction.RollbackAsync();
                 return ResultadoPadrao<object>.Falha("Erro ao fazer deposito", 500);
             }
 
@@ -80,7 +85,6 @@ namespace API_devbank.Services
             if (dto.Valor <= 0)
                 return ResultadoPadrao<object>.Falha("Valor tem que ser positivo", 400);
 
-            using var transaction = await db.Database.BeginTransactionAsync();
             try
             {
                 var valor = -dto.Valor;
@@ -89,7 +93,6 @@ namespace API_devbank.Services
 
                 if (ContaAtualizada == null)
                 {
-                    await transaction.RollbackAsync();
                     return ResultadoPadrao<object>.Falha("Saldo insuficiente", 400);
                 }
 
@@ -101,12 +104,10 @@ namespace API_devbank.Services
                 };
                 db.TabelaTransacoes.Add(saque);
                 await db.SaveChangesAsync();
-                await transaction.CommitAsync();
                 return ResultadoPadrao<object>.Ok(null, mensagem: $"Saque feito com sucesso, saldo atual: {conta.Saldo}");
             }
             catch (Exception)
             {
-                await transaction.RollbackAsync();
                 return ResultadoPadrao<object>.Falha("Erro ao fazer saque", 500);
             }
         }
@@ -117,10 +118,10 @@ namespace API_devbank.Services
             {
                 return ResultadoPadrao<object>.Falha("Tem que ser um valor positivo", 400);
             }
-            var usuarioDestino = db.TabelaUsuarios.FirstOrDefault(u => u.Cpf == dto.CpfContaDestino); 
+            var usuarioDestino = db.TabelaUsuarios.FirstOrDefault(u => u.Cpf == dto.CpfContaDestino);
 
-            if (usuarioDestino == null) 
-                return ResultadoPadrao<object>.Falha("CPF não encontrado", 404); 
+            if (usuarioDestino == null)
+                return ResultadoPadrao<object>.Falha("CPF não encontrado", 404);
 
             var contaDestino = db.TabelaContas.FirstOrDefault(c => c.IdUsuario == usuarioDestino.Id);
 
@@ -139,41 +140,70 @@ namespace API_devbank.Services
             {
                 return ResultadoPadrao<object>.Falha("não pode transferir para própia conta", 400);
             }
+            var strategy = db.Database.CreateExecutionStrategy();
 
-            using var transaction = await db.Database.BeginTransactionAsync();
-
-            try
+            return await strategy.ExecuteAsync(async () =>
             {
-                var transferir = AtualizarSaldo(contaOrigem, -dto.Valor);
-                if (transferir == null)
+                using var transaction =
+                    await db.Database.BeginTransactionAsync();
+
+                try
+                {
+                    var transferir =
+                        AtualizarSaldo(contaOrigem, -dto.Valor);
+
+                    if (transferir == null)
+                    {
+                        await transaction.RollbackAsync();
+
+                        return ResultadoPadrao<object>.Falha(
+                            "Saldo insuficiente",
+                            400
+                        );
+                    }
+
+                    var receber =
+                        AtualizarSaldo(contaDestino, dto.Valor);
+
+                    if (receber == null)
+                    {
+                        await transaction.RollbackAsync();
+
+                        return ResultadoPadrao<object>.Falha(
+                            "Erro ao processar crédito na conta destino",
+                            400
+                        );
+                    }
+
+                    var transferencia = new TabelaTransaco
+                    {
+                        Tipo = TipoTransacao.T.ToString(),
+                        Valor = dto.Valor,
+                        ContaOrigemId = contaOrigem.Id,
+                        ContaDestinoId = contaDestino.Id,
+                    };
+
+                    db.TabelaTransacoes.Add(transferencia);
+
+                    await db.SaveChangesAsync();
+
+                    await transaction.CommitAsync();
+
+                    return ResultadoPadrao<object>.Ok(
+                        null,
+                        mensagem: $"Transferencia feita com sucesso, saldo atual: {contaOrigem.Saldo}"
+                    );
+                }
+                catch (Exception ex)
                 {
                     await transaction.RollbackAsync();
-                    return ResultadoPadrao<object>.Falha("Saldo insuficiente", 400);
-                }
-                var receber = AtualizarSaldo(contaDestino, dto.Valor);
-                if (receber == null)
-                {
-                    await transaction.RollbackAsync();
-                    return ResultadoPadrao<object>.Falha("Erro ao processar crédito na conta destino", 400);
-                }
 
-                var transferencia = new TabelaTransaco
-                {
-                    Tipo = TipoTransacao.T.ToString(),
-                    Valor = dto.Valor,
-                    ContaOrigemId = contaOrigem.Id,
-                    ContaDestinoId = contaDestino.Id,
-                };
-                db.TabelaTransacoes.Add(transferencia);
-                await db.SaveChangesAsync();
-                await transaction.CommitAsync();
-                return ResultadoPadrao<object>.Ok(null, mensagem: $"Transferencia feita com sucesso, saldo atual: {contaOrigem.Saldo}");
-            }
-            catch (Exception)
-            {
-                await transaction.RollbackAsync();
-                return ResultadoPadrao<object>.Falha("Erro ao fazer transferencia", 500);
-            }
+                    return ResultadoPadrao<object>.Falha(
+                        ex.InnerException?.Message ?? ex.Message,
+                        500
+                    );
+                }
+            });
         }
 
         public async Task<ResultadoPadrao<List<ExtratoResponse>>> Extrato()
@@ -182,7 +212,7 @@ namespace API_devbank.Services
             if (conta == null)
                 return ResultadoPadrao<List<ExtratoResponse>>.Falha("Conta não encontrada", 404);
 
-    
+
 
             var extrato = await db.TabelaTransacoes.Where(e => e.ContaDestinoId == conta.Id || e.ContaOrigemId == conta.Id)
                 .OrderByDescending(c => c.CriadoEm)
@@ -198,7 +228,7 @@ namespace API_devbank.Services
             return ResultadoPadrao<List<ExtratoResponse>>.Ok(extrato);
         }
 
-      
+
 
         private TabelaConta AtualizarSaldo(TabelaConta conta, decimal valor)
         {
@@ -223,16 +253,16 @@ namespace API_devbank.Services
                 throw new Exception("Usuário não autenticado ou ID inválido");
 
             var dados = (from u in db.TabelaUsuarios
-                        join c in db.TabelaContas on u.Id equals c.IdUsuario
-                        where u.Id == id
-                        select new DadosUsuarioResponse
-                        {
-                            Nome = u.Nome,
-                            CPF = u.Cpf,
-                            Email = u.Email,
-                            Telefone = u.Telefone,
-                            Saldo = c.Saldo
-                        }).FirstOrDefault();
+                         join c in db.TabelaContas on u.Id equals c.IdUsuario
+                         where u.Id == id
+                         select new DadosUsuarioResponse
+                         {
+                             Nome = u.Nome,
+                             CPF = u.Cpf,
+                             Email = u.Email,
+                             Telefone = u.Telefone,
+                             Saldo = c.Saldo
+                         }).FirstOrDefault();
 
             return dados;
         }
