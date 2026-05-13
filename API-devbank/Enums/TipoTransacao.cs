@@ -4,6 +4,7 @@
     {
         D, //deposito
         S, //saque
-        T // transferir
+        T, // transferir
+        P //Pix
     }
 }

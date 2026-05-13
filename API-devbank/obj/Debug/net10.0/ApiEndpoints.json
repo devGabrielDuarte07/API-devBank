@@ -84,6 +84,64 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "API_devbank.Controllers.PixController",
+    "Method": "BuscarChavesDaConta",
+    "RelativePath": "api/Pix",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_devbank.Controllers.PixController",
+    "Method": "CadastrarChave",
+    "RelativePath": "api/Pix",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "API_devbank.DTOs.Pix.CriarChaveRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_devbank.Controllers.PixController",
+    "Method": "ExcluirChave",
+    "RelativePath": "api/Pix/{idChave}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idChave",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_devbank.Controllers.PixController",
+    "Method": "EnviarPix",
+    "RelativePath": "api/Pix/enviar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "API_devbank.DTOs.Pix.EnviarPixRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API_devbank.Controllers.UsuarioController",
     "Method": "CriarUsuario",
     "RelativePath": "api/Usuario",

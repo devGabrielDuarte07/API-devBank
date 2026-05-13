@@ -153,6 +153,101 @@
         }
       }
     },
+    "/api/Pix": {
+      "get": {
+        "tags": [
+          "Pix"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pix"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CriarChaveRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CriarChaveRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CriarChaveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Pix/{idChave}": {
+      "delete": {
+        "tags": [
+          "Pix"
+        ],
+        "parameters": [
+          {
+            "name": "idChave",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Pix/enviar": {
+      "post": {
+        "tags": [
+          "Pix"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnviarPixRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnviarPixRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnviarPixRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Usuario": {
       "post": {
         "tags": [
@@ -187,6 +282,19 @@
   },
   "components": {
     "schemas": {
+      "CriarChaveRequest": {
+        "type": "object",
+        "properties": {
+          "tipo": {
+            "$ref": "#/components/schemas/TipoChave"
+          },
+          "chave": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CriarUsuarioRequest": {
         "required": [
           "cpf",
@@ -225,6 +333,20 @@
         },
         "additionalProperties": false
       },
+      "EnviarPixRequest": {
+        "type": "object",
+        "properties": {
+          "chave": {
+            "type": "string",
+            "nullable": true
+          },
+          "valor": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
       "LoginRequest": {
         "required": [
           "senha"
@@ -234,21 +356,31 @@
           "email": {
             "type": "string",
             "format": "email",
+            "default": "teste3@gmail.com",
             "nullable": true
           },
           "senha": {
             "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "default": "Aa123456"
           }
         },
         "additionalProperties": false
       },
+      "TipoChave": {
+        "enum": [
+          "CPF",
+          "EMAIL",
+          "TELEFONE"
+        ],
+        "type": "string"
+      },
       "TransferenciaRequest": {
         "type": "object",
         "properties": {
-          "contaDestinoId": {
-            "type": "integer",
-            "format": "int32"
+          "cpfContaDestino": {
+            "type": "string",
+            "nullable": true
           },
           "valor": {
             "type": "number",

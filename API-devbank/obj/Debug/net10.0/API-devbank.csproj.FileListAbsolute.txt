@@ -130,3 +130,5 @@ C:\Users\biel1\OneDrive\Área de Trabalho\API-devbank\API-devbank\obj\Debug\net1
 C:\Users\biel1\OneDrive\Área de Trabalho\API-devbank\API-devbank\obj\Debug\net10.0\API-devbank.pdb
 C:\Users\biel1\OneDrive\Área de Trabalho\API-devbank\API-devbank\obj\Debug\net10.0\API-devbank.genruntimeconfig.cache
 C:\Users\biel1\OneDrive\Área de Trabalho\API-devbank\API-devbank\obj\Debug\net10.0\ref\API-devbank.dll
+C:\Users\biel1\OneDrive\Área de Trabalho\API-devbank\API-devbank\obj\Debug\net10.0\API-devbank.sourcelink.json
+C:\Users\biel1\OneDrive\Área de Trabalho\API-devbank\API-devbank\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

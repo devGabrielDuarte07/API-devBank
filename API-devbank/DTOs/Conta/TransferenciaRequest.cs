@@ -2,7 +2,7 @@
 {
     public class TransferenciaRequest
     {
-        public int ContaDestinoId { get; set; }
+        public string CpfContaDestino { get; set; }
         public decimal Valor { get; set;  }
     }
 }

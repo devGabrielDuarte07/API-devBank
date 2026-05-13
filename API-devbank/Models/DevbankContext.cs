@@ -22,6 +22,8 @@ public partial class DevbankContext : DbContext
 
     public virtual DbSet<TabelaUsuario> TabelaUsuarios { get; set; }
 
+    public virtual DbSet<TabelaChavePix> TabelaChavePix { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySql("server=localhost;database=devbank;user=root;password=senai", Microsoft.EntityFrameworkCore.ServerVersion.Parse("12.0.2-mariadb"));
@@ -31,6 +33,41 @@ public partial class DevbankContext : DbContext
         modelBuilder
             .UseCollation("utf8mb4_uca1400_ai_ci")
             .HasCharSet("utf8mb4");
+
+        modelBuilder.Entity<TabelaChavePix>(entity =>
+        {
+            entity.ToTable("tabela_chave_pix");
+
+            entity.HasKey(e => e.Id);
+
+            entity.Property(e => e.Id)
+                .HasColumnName("id");
+
+            entity.Property(e => e.Tipo)
+                .HasColumnName("Tipo")
+                .HasConversion<string>()
+                .HasMaxLength(20)
+                .IsRequired();
+
+            entity.Property(e => e.Chave)
+                .HasColumnName("Chave")
+                .HasMaxLength(100)
+                .IsRequired();
+
+            entity.Property(e => e.ContaId)
+                .HasColumnName("Id_conta")
+                .IsRequired();
+
+            entity.Property(e => e.IsAtivo)
+                .HasDefaultValueSql("b'1'")
+                .HasColumnType("bit(1)")
+                .HasColumnName("isAtivo");
+
+            entity.HasOne(e => e.Conta)
+                .WithMany(c => c.ChavesPix)
+                .HasForeignKey(e => e.ContaId)
+                .OnDelete(DeleteBehavior.NoAction);
+        });
 
         modelBuilder.Entity<TabelaConta>(entity =>
         {
@@ -84,7 +121,7 @@ public partial class DevbankContext : DbContext
                 .HasColumnType("timestamp")
                 .HasColumnName("criado_em");
             entity.Property(e => e.Tipo)
-                .HasColumnType("enum('D','S','T')")
+                .HasColumnType("enum('D','S','T','P')")
                 .HasColumnName("tipo");
             entity.Property(e => e.Valor)
                 .HasPrecision(10, 2)

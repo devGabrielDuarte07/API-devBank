@@ -15,6 +15,8 @@ public partial class TabelaConta
 
     public virtual TabelaUsuario IdUsuarioNavigation { get; set; } = null!;
 
+    public List<TabelaChavePix> ChavesPix { get; set; }
+
     public virtual ICollection<TabelaTransaco> TabelaTransacoContaDestinos { get; set; } = new List<TabelaTransaco>();
 
     public virtual ICollection<TabelaTransaco> TabelaTransacoContaOrigems { get; set; } = new List<TabelaTransaco>();

@@ -1,16 +1,14 @@
-
 using API_devbank.Models;
+using API_devbank.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi;
 using Microsoft.OpenApi.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-// 🔹 Controllers
+// Controllers
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -18,8 +16,19 @@ builder.Services.AddControllers()
             new System.Text.Json.Serialization.JsonStringEnumConverter());
     });
 
-// 🔹 Swagger + JWT
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("DevBankPolicy", policy =>
+    {
+        policy
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 builder.Services.AddSwaggerGen(options =>
 {
@@ -32,7 +41,6 @@ builder.Services.AddSwaggerGen(options =>
         In = ParameterLocation.Header
     });
 
-
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -44,34 +52,55 @@ builder.Services.AddSwaggerGen(options =>
                     Id = "Bearer"
                 }
             },
-            new string[] {}
+            Array.Empty<string>()
         }
     });
 });
-// 🔹 DbContext
+
+// DbContext
 builder.Services.AddDbContext<DevbankContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
+        ServerVersion.AutoDetect(
+            builder.Configuration.GetConnectionString("DefaultConnection"))
     )
 );
 
-// 🔹 JWT Authentication
-var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
+builder.Services.AddHttpContextAccessor();
+// Services
+builder.Services.AddScoped<ContaService>();
+builder.Services.AddScoped<LoginService>();
+builder.Services.AddScoped<UsuarioService>();
+builder.Services.AddScoped<PixService>();
+
+// JWT
+var jwtKey = builder.Configuration["Jwt:Key"];
+
+if (string.IsNullOrEmpty(jwtKey))
+{
+    throw new Exception("JWT Key não configurada");
+}
+
+var key = Encoding.UTF8.GetBytes(jwtKey);
 
 builder.Services.AddAuthentication(options =>
 {
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme =
+        JwtBearerDefaults.AuthenticationScheme;
+
+    options.DefaultChallengeScheme =
+        JwtBearerDefaults.AuthenticationScheme;
 })
 .AddJwtBearer(options =>
 {
     options.RequireHttpsMetadata = false;
     options.SaveToken = true;
+
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(key),
+
         ValidateIssuer = false,
         ValidateAudience = false
     };
@@ -79,12 +108,14 @@ builder.Services.AddAuthentication(options =>
 
 var app = builder.Build();
 
-// 🔹 Swagger
+// Swagger
 app.UseSwagger();
 app.UseSwaggerUI();
 
-// 🔹 Pipeline
-app.UseAuthentication(); // ⚠️ sempre antes
+app.UseHttpsRedirection();
+app.UseCors("DevBankPolicy");
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

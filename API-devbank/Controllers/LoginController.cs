@@ -1,6 +1,8 @@
-﻿using API_devbank.DTOs.Auth;
+﻿using API_devbank.Common;
+using API_devbank.DTOs.Auth;
 using API_devbank.Enums;
 using API_devbank.Models;
+using API_devbank.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -12,57 +14,20 @@ namespace API_devbank.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoginController : ControllerBase
+    public class LoginController : BaseController
     {
 
-        private readonly DevbankContext db;
-        private readonly IConfiguration _config;
-
-        public LoginController(DevbankContext db, IConfiguration config)
+        private readonly LoginService _loginService;
+        
+        public LoginController(LoginService loginService)
         {
-            this.db = db;
-            _config = config;
+            _loginService = loginService;
         }
 
         [HttpPost]
         public IActionResult Login(LoginRequest dto)
         {
-
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var usuario = db.TabelaUsuarios.FirstOrDefault(u => u.Email == dto.Email);
-
-            if (usuario == null || !BCrypt.Net.BCrypt.Verify(dto.Senha, usuario.Senha))
-            {
-                return Unauthorized("Email ou senha inválidos");
-            }
-
-            string role = usuario.Perfil == PerfilEnum.A.ToString() ? "admin" : "cliente";
-
-            var claims = new List<Claim> {
-                       new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString()),
-                    new Claim(ClaimTypes.Role, role)
-            };
-
-            var key = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(_config["Jwt:Key"])
-            );
-
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(
-                claims: claims,
-                expires: DateTime.Now.AddDays(7),
-                signingCredentials: creds
-            );
-
-            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
-
-            return Ok(new { token = tokenString });
-        
+            return Resultado(_loginService.Login(dto));
         }
     }
 }
