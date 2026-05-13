@@ -1,9 +1,12 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
+COPY API-devbank/API-devbank.csproj API-devbank/
+RUN dotnet restore API-devbank/API-devbank.csproj
+
 COPY . .
 
-RUN dotnet restore
+WORKDIR /src/API-devbank
 RUN dotnet publish -c Release -o /app/publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
