@@ -140,70 +140,67 @@ namespace API_devbank.Services
             {
                 return ResultadoPadrao<object>.Falha("não pode transferir para própia conta", 400);
             }
-            var strategy = db.Database.CreateExecutionStrategy();
 
-            return await strategy.ExecuteAsync(async () =>
+            using var transaction =
+                await db.Database.BeginTransactionAsync();
+
+            try
             {
-                using var transaction =
-                    await db.Database.BeginTransactionAsync();
+                var transferir =
+                    AtualizarSaldo(contaOrigem, -dto.Valor);
 
-                try
-                {
-                    var transferir =
-                        AtualizarSaldo(contaOrigem, -dto.Valor);
-
-                    if (transferir == null)
-                    {
-                        await transaction.RollbackAsync();
-
-                        return ResultadoPadrao<object>.Falha(
-                            "Saldo insuficiente",
-                            400
-                        );
-                    }
-
-                    var receber =
-                        AtualizarSaldo(contaDestino, dto.Valor);
-
-                    if (receber == null)
-                    {
-                        await transaction.RollbackAsync();
-
-                        return ResultadoPadrao<object>.Falha(
-                            "Erro ao processar crédito na conta destino",
-                            400
-                        );
-                    }
-
-                    var transferencia = new TabelaTransaco
-                    {
-                        Tipo = TipoTransacao.T.ToString(),
-                        Valor = dto.Valor,
-                        ContaOrigemId = contaOrigem.Id,
-                        ContaDestinoId = contaDestino.Id,
-                    };
-
-                    db.TabelaTransacoes.Add(transferencia);
-
-                    await db.SaveChangesAsync();
-
-                    await transaction.CommitAsync();
-
-                    return ResultadoPadrao<object>.Ok(
-                        null,
-                        mensagem: $"Transferencia feita com sucesso, saldo atual: {contaOrigem.Saldo}"
-                    );
-                }
-                catch (Exception ex)
+                if (transferir == null)
                 {
                     await transaction.RollbackAsync();
 
                     return ResultadoPadrao<object>.Falha(
-                        ex.InnerException?.Message ?? ex.Message,
-                        500
+                        "Saldo insuficiente",
+                        400
                     );
                 }
-            });
+
+                var receber =
+                    AtualizarSaldo(contaDestino, dto.Valor);
+
+                if (receber == null)
+                {
+                    await transaction.RollbackAsync();
+
+                    return ResultadoPadrao<object>.Falha(
+                        "Erro ao processar crédito na conta destino",
+                        400
+                    );
+                }
+
+                var transferencia = new TabelaTransaco
+                {
+                    Tipo = TipoTransacao.T.ToString(),
+                    Valor = dto.Valor,
+                    ContaOrigemId = contaOrigem.Id,
+                    ContaDestinoId = contaDestino.Id,
+                };
+
+                db.TabelaTransacoes.Add(transferencia);
+
+                await db.SaveChangesAsync();
+
+                await transaction.CommitAsync();
+
+                return ResultadoPadrao<object>.Ok(
+                    null,
+                    mensagem: $"Transferencia feita com sucesso, saldo atual: {contaOrigem.Saldo}"
+                );
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+
+                return ResultadoPadrao<object>.Falha(
+                    ex.InnerException?.Message ?? ex.Message,
+                    500
+                );
+            }
+
         }
 
         public async Task<ResultadoPadrao<List<ExtratoResponse>>> Extrato()

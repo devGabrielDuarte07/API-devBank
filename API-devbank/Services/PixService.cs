@@ -162,11 +162,6 @@ namespace API_devbank.Services
                 );
             }
 
-            var strategy =
-                db.Database.CreateExecutionStrategy();
-
-            return await strategy.ExecuteAsync(async () =>
-            {
                 using var transaction =
                     await db.Database.BeginTransactionAsync();
 
@@ -234,7 +229,6 @@ namespace API_devbank.Services
                         500
                     );
                 }
-            });
         }
         private TabelaConta AtualizarSaldo(TabelaConta conta, decimal valor)
         {
