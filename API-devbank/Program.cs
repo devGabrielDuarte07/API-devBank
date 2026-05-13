@@ -95,7 +95,11 @@ builder.Services.AddDbContext<DevbankContext>(options =>
 {
     options.UseMySql(
         connectionString,
-        ServerVersion.AutoDetect(connectionString)
+        ServerVersion.AutoDetect(connectionString),
+        mysqlOptions =>
+        {
+            mysqlOptions.EnableRetryOnFailure();
+        }
     );
 });
 
