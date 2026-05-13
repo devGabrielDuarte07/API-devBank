@@ -1,30 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\",
+  "WorkspaceRootPath": "C:\\Users\\gabriel\\Desktop\\API-devBank\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|c:\\users\\biel1\\onedrive\\\u00E1rea de trabalho\\api-devbank\\api-devbank\\controllers\\pixcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|solutionrelative:api-devbank\\controllers\\pixcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|c:\\users\\biel1\\onedrive\\\u00E1rea de trabalho\\api-devbank\\api-devbank\\services\\pixservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|solutionrelative:api-devbank\\services\\pixservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|c:\\users\\biel1\\onedrive\\\u00E1rea de trabalho\\api-devbank\\api-devbank\\services\\contaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|c:\\users\\gabriel\\desktop\\api-devbank\\api-devbank\\services\\contaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|solutionrelative:api-devbank\\services\\contaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|c:\\users\\biel1\\onedrive\\\u00E1rea de trabalho\\api-devbank\\api-devbank\\services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|solutionrelative:api-devbank\\services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|c:\\users\\biel1\\onedrive\\\u00E1rea de trabalho\\api-devbank\\api-devbank\\dtos\\auth\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|solutionrelative:api-devbank\\dtos\\auth\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|c:\\users\\biel1\\onedrive\\\u00E1rea de trabalho\\api-devbank\\api-devbank\\dtos\\pix\\enviarpixrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|solutionrelative:api-devbank\\dtos\\pix\\enviarpixrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|c:\\users\\gabriel\\desktop\\api-devbank\\api-devbank\\dtos\\conta\\extratoresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|solutionrelative:api-devbank\\dtos\\conta\\extratoresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,86 +18,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UsuarioService.cs",
-              "DocumentMoniker": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Services\\UsuarioService.cs",
-              "RelativeDocumentMoniker": "API-devbank\\Services\\UsuarioService.cs",
-              "ToolTip": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Services\\UsuarioService.cs",
-              "RelativeToolTip": "API-devbank\\Services\\UsuarioService.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAA5wAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ExtratoResponse.cs",
+              "DocumentMoniker": "C:\\Users\\gabriel\\Desktop\\API-devBank\\API-devbank\\DTOs\\Conta\\ExtratoResponse.cs",
+              "RelativeDocumentMoniker": "API-devbank\\DTOs\\Conta\\ExtratoResponse.cs",
+              "ToolTip": "C:\\Users\\gabriel\\Desktop\\API-devBank\\API-devbank\\DTOs\\Conta\\ExtratoResponse.cs",
+              "RelativeToolTip": "API-devbank\\DTOs\\Conta\\ExtratoResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-13T00:35:56.212Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "EnviarPixRequest.cs",
-              "DocumentMoniker": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\DTOs\\Pix\\EnviarPixRequest.cs",
-              "RelativeDocumentMoniker": "API-devbank\\DTOs\\Pix\\EnviarPixRequest.cs",
-              "ToolTip": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\DTOs\\Pix\\EnviarPixRequest.cs",
-              "RelativeToolTip": "API-devbank\\DTOs\\Pix\\EnviarPixRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-13T00:32:25.072Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LoginRequest.cs",
-              "DocumentMoniker": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\DTOs\\Auth\\LoginRequest.cs",
-              "RelativeDocumentMoniker": "API-devbank\\DTOs\\Auth\\LoginRequest.cs",
-              "ToolTip": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\DTOs\\Auth\\LoginRequest.cs",
-              "RelativeToolTip": "API-devbank\\DTOs\\Auth\\LoginRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-13T00:29:41.733Z",
+              "WhenOpened": "2026-05-13T11:55:27.913Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PixController.cs",
-              "DocumentMoniker": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Controllers\\PixController.cs",
-              "RelativeDocumentMoniker": "API-devbank\\Controllers\\PixController.cs",
-              "ToolTip": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Controllers\\PixController.cs",
-              "RelativeToolTip": "API-devbank\\Controllers\\PixController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwCYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-13T00:02:53.303Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PixService.cs",
-              "DocumentMoniker": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Services\\PixService.cs",
-              "RelativeDocumentMoniker": "API-devbank\\Services\\PixService.cs",
-              "ToolTip": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Services\\PixService.cs",
-              "RelativeToolTip": "API-devbank\\Services\\PixService.cs",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAcwG4AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-12T23:37:10.697Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "ContaService.cs",
-              "DocumentMoniker": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Services\\ContaService.cs",
+              "DocumentMoniker": "C:\\Users\\gabriel\\Desktop\\API-devBank\\API-devbank\\Services\\ContaService.cs",
               "RelativeDocumentMoniker": "API-devbank\\Services\\ContaService.cs",
-              "ToolTip": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Services\\ContaService.cs",
+              "ToolTip": "C:\\Users\\gabriel\\Desktop\\API-devBank\\API-devbank\\Services\\ContaService.cs",
               "RelativeToolTip": "API-devbank\\Services\\ContaService.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAwwHMAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAKcAAAAAAAAAAAAMwMMAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-12T22:58:47.716Z",
               "EditorCaption": ""

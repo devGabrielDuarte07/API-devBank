@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\biel1\\OneDrive\\Área de Trabalho\\API-devbank\\API-devbank\\API-devbank.csproj": {}
+    "C:\\Users\\gabriel\\Desktop\\API-devBank\\API-devbank\\API-devbank.csproj": {}
   },
   "projects": {
-    "C:\\Users\\biel1\\OneDrive\\Área de Trabalho\\API-devbank\\API-devbank\\API-devbank.csproj": {
+    "C:\\Users\\gabriel\\Desktop\\API-devBank\\API-devbank\\API-devbank.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\biel1\\OneDrive\\Área de Trabalho\\API-devbank\\API-devbank\\API-devbank.csproj",
+        "projectUniqueName": "C:\\Users\\gabriel\\Desktop\\API-devBank\\API-devbank\\API-devbank.csproj",
         "projectName": "API-devbank",
-        "projectPath": "C:\\Users\\biel1\\OneDrive\\Área de Trabalho\\API-devbank\\API-devbank\\API-devbank.csproj",
-        "packagesPath": "C:\\Users\\biel1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\biel1\\OneDrive\\Área de Trabalho\\API-devbank\\API-devbank\\obj\\",
+        "projectPath": "C:\\Users\\gabriel\\Desktop\\API-devBank\\API-devbank\\API-devbank.csproj",
+        "packagesPath": "C:\\Users\\gabriel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gabriel\\Desktop\\API-devBank\\API-devbank\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\visual studio shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\biel1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gabriel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

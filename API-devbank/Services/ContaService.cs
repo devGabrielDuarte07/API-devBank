@@ -182,6 +182,8 @@ namespace API_devbank.Services
             if (conta == null)
                 return ResultadoPadrao<List<ExtratoResponse>>.Falha("Conta não encontrada", 404);
 
+    
+
             var extrato = await db.TabelaTransacoes.Where(e => e.ContaDestinoId == conta.Id || e.ContaOrigemId == conta.Id)
                 .OrderByDescending(c => c.CriadoEm)
                 .Select(c => new ExtratoResponse
@@ -189,7 +191,9 @@ namespace API_devbank.Services
                     Tipo = c.Tipo,
                     Valor = c.Valor,
                     Data = c.CriadoEm,
-                    Direcao = c.ContaDestinoId == conta.Id ? "Entrada" : "Saída"
+                    Direcao = c.ContaDestinoId == conta.Id ? "Entrada" : "Saída",
+                    NomeDestino = c.ContaDestino.IdUsuarioNavigation.Nome,
+                    NomeOrigem = c.ContaOrigem.IdUsuarioNavigation.Nome
                 }).ToListAsync();
             return ResultadoPadrao<List<ExtratoResponse>>.Ok(extrato);
         }
