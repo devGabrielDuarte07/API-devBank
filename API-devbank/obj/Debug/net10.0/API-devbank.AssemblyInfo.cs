@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("API-devbank")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4d32c60130c15988cba072a18c45e6ed70992df5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+06d2c343a83fd5729b61fad57afc8a7d38d1bb4a")]
 [assembly: System.Reflection.AssemblyProductAttribute("API-devbank")]
 [assembly: System.Reflection.AssemblyTitleAttribute("API-devbank")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

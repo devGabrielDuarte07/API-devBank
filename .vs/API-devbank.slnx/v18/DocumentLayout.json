@@ -1,13 +1,20 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\gabriel\\Desktop\\API-devBank\\",
+  "WorkspaceRootPath": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|c:\\users\\gabriel\\desktop\\api-devbank\\api-devbank\\services\\contaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|c:\\users\\biel1\\onedrive\\\u00E1rea de trabalho\\api-devbank\\api-devbank\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|solutionrelative:api-devbank\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\10.0.203\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|c:\\users\\biel1\\onedrive\\\u00E1rea de trabalho\\api-devbank\\api-devbank\\services\\contaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|solutionrelative:api-devbank\\services\\contaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|c:\\users\\gabriel\\desktop\\api-devbank\\api-devbank\\dtos\\conta\\extratoresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|c:\\users\\biel1\\onedrive\\\u00E1rea de trabalho\\api-devbank\\api-devbank\\dtos\\conta\\extratoresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{655BED1D-E4CE-605F-4B6F-B8387E0E3756}|API-devbank\\API-devbank.csproj|solutionrelative:api-devbank\\dtos\\conta\\extratoresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -21,27 +28,56 @@
           "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ExtratoResponse.cs",
-              "DocumentMoniker": "C:\\Users\\gabriel\\Desktop\\API-devBank\\API-devbank\\DTOs\\Conta\\ExtratoResponse.cs",
-              "RelativeDocumentMoniker": "API-devbank\\DTOs\\Conta\\ExtratoResponse.cs",
-              "ToolTip": "C:\\Users\\gabriel\\Desktop\\API-devBank\\API-devbank\\DTOs\\Conta\\ExtratoResponse.cs",
-              "RelativeToolTip": "API-devbank\\DTOs\\Conta\\ExtratoResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-13T11:55:27.913Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Program.cs",
+              "RelativeDocumentMoniker": "API-devbank\\Program.cs",
+              "ToolTip": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Program.cs",
+              "RelativeToolTip": "API-devbank\\Program.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAcwLQAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-13T20:20:28.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Microsoft.PackageDependencyResolution.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\10.0.203\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\10.0.203\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\10.0.203\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\10.0.203\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "ViewState": "AgIAAOsAAAAAAAAAAAAcwAkBAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-05-13T17:27:11.347Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ExtratoResponse.cs",
+              "DocumentMoniker": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\DTOs\\Conta\\ExtratoResponse.cs",
+              "RelativeDocumentMoniker": "API-devbank\\DTOs\\Conta\\ExtratoResponse.cs",
+              "ToolTip": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\DTOs\\Conta\\ExtratoResponse.cs",
+              "RelativeToolTip": "API-devbank\\DTOs\\Conta\\ExtratoResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-13T11:55:27.913Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ContaService.cs",
-              "DocumentMoniker": "C:\\Users\\gabriel\\Desktop\\API-devBank\\API-devbank\\Services\\ContaService.cs",
+              "DocumentMoniker": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Services\\ContaService.cs",
               "RelativeDocumentMoniker": "API-devbank\\Services\\ContaService.cs",
-              "ToolTip": "C:\\Users\\gabriel\\Desktop\\API-devBank\\API-devbank\\Services\\ContaService.cs",
+              "ToolTip": "C:\\Users\\biel1\\OneDrive\\\u00C1rea de Trabalho\\API-devbank\\API-devbank\\Services\\ContaService.cs",
               "RelativeToolTip": "API-devbank\\Services\\ContaService.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAApwDkAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAADgvysAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-12T22:58:47.716Z",
               "EditorCaption": ""
