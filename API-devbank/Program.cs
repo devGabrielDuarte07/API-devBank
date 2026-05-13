@@ -94,8 +94,12 @@ var connectionString =
     );
 
 
-Console.WriteLine(connectionString);
-
+if (string.IsNullOrEmpty(connectionString))
+{
+    throw new Exception(
+        "Connection string não encontrada."
+    );
+}
 builder.Services.AddDbContext<DevbankContext>(options =>
 {
     options.UseMySql(
