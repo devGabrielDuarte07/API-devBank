@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("API-devbank")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0195a89dc88ed38fb7a456cfb32c7c08d233fab")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f1e5482471d1aac12549918c1a3c4c742da2733")]
 [assembly: System.Reflection.AssemblyProductAttribute("API-devbank")]
 [assembly: System.Reflection.AssemblyTitleAttribute("API-devbank")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
