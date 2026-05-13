@@ -89,7 +89,9 @@ builder.Services.AddSwaggerGen(options =>
 // ==========================================
 
 var connectionString =
-    builder.Configuration.GetConnectionString("DefaultConnection");
+    Environment.GetEnvironmentVariable(
+        "ConnectionStrings__DefaultConnection"
+    );
 
 
 Console.WriteLine(connectionString);
@@ -121,7 +123,7 @@ builder.Services.AddScoped<PixService>();
 // JWT
 // ==========================================
 
-var jwtKey = builder.Configuration["Jwt:Key"];
+var jwtKey = builder.Configuration["Jwt__Key"];
 
 if (string.IsNullOrEmpty(jwtKey))
 {
