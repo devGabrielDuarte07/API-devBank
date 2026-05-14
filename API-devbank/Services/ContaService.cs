@@ -141,9 +141,6 @@ namespace API_devbank.Services
                 return ResultadoPadrao<object>.Falha("não pode transferir para própia conta", 400);
             }
 
-            using var transaction =
-                await db.Database.BeginTransactionAsync();
-
             try
             {
                 var transferir =
@@ -151,7 +148,6 @@ namespace API_devbank.Services
 
                 if (transferir == null)
                 {
-                    await transaction.RollbackAsync();
 
                     return ResultadoPadrao<object>.Falha(
                         "Saldo insuficiente",
@@ -164,8 +160,6 @@ namespace API_devbank.Services
 
                 if (receber == null)
                 {
-                    await transaction.RollbackAsync();
-
                     return ResultadoPadrao<object>.Falha(
                         "Erro ao processar crédito na conta destino",
                         400
@@ -184,8 +178,6 @@ namespace API_devbank.Services
 
                 await db.SaveChangesAsync();
 
-                await transaction.CommitAsync();
-
                 return ResultadoPadrao<object>.Ok(
                     null,
                     mensagem: $"Transferencia feita com sucesso, saldo atual: {contaOrigem.Saldo}"
@@ -193,8 +185,6 @@ namespace API_devbank.Services
             }
             catch (Exception ex)
             {
-                await transaction.RollbackAsync();
-
                 return ResultadoPadrao<object>.Falha(
                     ex.InnerException?.Message ?? ex.Message,
                     500

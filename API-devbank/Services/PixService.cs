@@ -162,9 +162,6 @@ namespace API_devbank.Services
                 );
             }
 
-                using var transaction =
-                    await db.Database.BeginTransactionAsync();
-
                 try
                 {
                     var contaOrigemAtualizada =
@@ -175,7 +172,6 @@ namespace API_devbank.Services
 
                     if (contaOrigemAtualizada == null)
                     {
-                        await transaction.RollbackAsync();
 
                         return ResultadoPadrao<object>.Falha(
                             "Saldo insuficiente",
@@ -191,8 +187,6 @@ namespace API_devbank.Services
 
                     if (contaDestinoAtualizada == null)
                     {
-                        await transaction.RollbackAsync();
-
                         return ResultadoPadrao<object>.Falha(
                             "Erro ao processar crédito na conta destino",
                             400
@@ -211,8 +205,6 @@ namespace API_devbank.Services
 
                     await db.SaveChangesAsync();
 
-                    await transaction.CommitAsync();
-
                     return ResultadoPadrao<object>.Ok(
                         null,
                         mensagem:
@@ -221,8 +213,6 @@ namespace API_devbank.Services
                 }
                 catch (Exception ex)
                 {
-                    await transaction.RollbackAsync();
-
                     return ResultadoPadrao<object>.Falha(
                         ex.InnerException?.Message ??
                         ex.Message,
